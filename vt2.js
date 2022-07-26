@@ -18,15 +18,48 @@
 		let parser = new window.DOMParser();
 		xmldata = parser.parseFromString( data, "text/xml" );
 		// tästä eteenpäin omaa koodia
+        let dataRakenne = {
+            joukkueet: [],
+            rastit: [],
+            sarjat: [],
+        };
+        let joukkueData = xmldata.documentElement.getElementsByTagName("joukkue");
+        let rastiData = xmldata.documentElement.getElementsByTagName("rasti");
+        let sarjaData = xmldata.documentElement.getElementsByTagName("sarja");
+        for (let rasti of rastiData) {
+            let rastiObjekti = {
+                id: rasti.getAttribute("id"),
+                koodi: rasti.getAttribute("koodi"),
+                lat: rasti.getAttribute("lat"),
+                lon: rasti.getAttribute("lon")
+            };
+            // pushaa dataan
+            dataRakenne.rastit.push(rastiObjekti);
+        }
+        for (let sarja of sarjaData) {
+            let sarjaObjekti = {
+                id: sarja.getAttribute("id"),
+                kesto: sarja.getAttribute("kesto"),
+                nimi: sarja.getAttribute("nimi")
+            };
+            dataRakenne.sarjat.push(sarjaObjekti);
+        }
+        for (let joukkue of joukkueData) {
+            let joukkueObjekti = {
+                jasenet: [], // lisää toteutus
+                nimi: joukkue.getAttribute("nimi"),
+                sarja: joukkue.getAttribute("sarja")
+            };
+            dataRakenne.joukkueet.push(joukkueObjekti);
+        }
 		console.log(xmldata);
 		console.log(xmldata.documentElement);
 		console.log(xmldata.documentElement.getElementsByTagName("joukkue"));
+        console.log(dataRakenne);
 	  }
 	);
 
   });
  // voit määritellä omia funktioita tänne saman lohkon sisään jolloin näkevät myös xmldata-muuttujan
- // ...
- // ...
- // ...
 }
+
