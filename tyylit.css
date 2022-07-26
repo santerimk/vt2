@@ -1,0 +1,43 @@
+form {
+    max-width: 22em;
+}
+
+fieldset {
+    max-width: 20em;
+    display: block;
+    margin: 0.2em;
+    overflow: hidden;
+}
+
+fieldset > label {
+    margin-right: 0.4em;
+    margin-bottom: 0.4em;
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    margin-bottom: 1em;
+    font-size: 125%;
+    font-weight: 500;
+}
+
+input {
+    display: inline-block;
+    float: right;
+    clear: left;
+    text-align: left;
+    margin-bottom: 1em;
+    margin-right: 2em;
+}
+
+legend {
+    font-size: 130%;
+    font-weight: 500;
+}
+
+button {
+    font-size: 110%;
+    font-weight: 500;
+    border-radius: 0;
+}
